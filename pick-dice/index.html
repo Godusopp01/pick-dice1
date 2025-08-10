@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Pick Dice Game</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+<header class="app-bar">
+    <h1>Pick Dice Game</h1>
+    <button id="btn-open-setting" class="ghost">setting</button>
+</header>
+
+<main class="layout">
+    <section class="scoreboard">
+        <div class="player-card" data-player="0" aria-live="polite">
+            <h2>
+                <span class="active-dot" aria-hidden="true">.</span>
+                <span class="player-name" id="p0-name">player 1</span>
+            </h2>
+            <div class="totals">
+                <span>totals score</span>
+                <strong id="p0-total">0</strong>
+            </div>
+            <div class="current">
+                <span>Score</span>
+                <strong id="p0-current">0</strong>
+            </div>
+        </div>
+
+        <div class="player-card" data-player="1" aria-live="polite">
+            <h2>
+                <span class="active-dot" aria-hidden="true">.</span>
+                <span class="player-name" id="p1-name">player 2</span>
+            </h2>
+            <div class="totals">
+                <span>totals score</span>
+                <strong id="p1-total">0</strong>
+            </div>
+            <div class="current">
+                <span>Score</span>
+                <strong id="p1-current">0</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="stage">
+        <div class="dice" id="dice" role="img" aria-label="Dice page 1">
+            <div class="pip"></div><div class="pip"></div><div class="pip"></div>
+            <div class="pip"></div><div class="pip"></div><div class="pip"></div>
+            <div class="pip"></div><div class="pip"></div><div class="pip"></div>
+        </div>
+
+        <p id="status" class="status" aria-live="polite">start new game</p>
+
+        <div class="controls">
+            <button id="btn-new">New Game</button>
+            <button id="btn-roll">Roll Dice</button>
+            <button id="btn-hold">Hold Score</button>
+        </div>
+    </section>
+</main>
+
+<!--Setting Modals-->
+<dialog id="setting">
+    <form method="dialog" id="setting-form">
+        <h3>Setting Game</h3>
+        <label>Player name 1
+            <input type="text" id="in-p1" placeholder="Player-1"/>
+        </label>
+        <label>Player name 2/Ai
+            <input type="text" id="in-p2" placeholder="Player-2"/>
+        </label>
+
+        <label>Target Score
+            <select id="in-target">
+                <option>50</option>
+                <option>150</option>
+                <option>200</option>
+                <option>250</option>
+            </select>
+        </label>
+
+        <fieldset class="stack">
+            <legend>Mode</legend>
+            <label><input type="radio" name="mode" value="pvp" checked/>2 Player</label>
+            <label><input type="radio" name="mode" value="cpu" />AI Player</label>
+        </fieldset>
+
+        <label class="ai-only">Levels
+            <select id="in-ai">
+                <option value="easy">easy</option>
+                <option value="medium" selected>medium</option>
+                <option value="hard">hard</option>
+            </select>
+        </label>
+
+        <menu>
+            <button value="cancel" class="ghost">cancel</button>
+            <button id="btn-save-setting" value="default">Save</button>
+        </menu>
+    </form>
+</dialog>
+
+<footer class="footer">
+    <small>Dice Game</small>
+</footer>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
